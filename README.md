@@ -1,9 +1,18 @@
-# Maxfierke Mstrap
+# maxfierke/homebrew-mstrap
 
-## How do I install these formulae?
-`brew install maxfierke/mstrap/<formula>`
+## How do I install mstrap with `brew`?
 
-Or `brew tap maxfierke/mstrap` and then `brew install <formula>`.
+```
+$ brew install maxfierke/mstrap/mstrap
+```
+
+Or 
+
+```
+$ brew tap maxfierke/mstrap
+$ brew install mstrap
+```
 
 ## Documentation
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+
+Please refer to the [mstrap documentation](https://mstrap.dev)
