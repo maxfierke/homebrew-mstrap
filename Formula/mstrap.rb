@@ -5,6 +5,10 @@ class Mstrap < Formula
   sha256 "6ddebd447fd5d89cf25583d6535d3ad37e60c8974205055c3a29a848153a7854"
   license "MIT"
 
+  depends_on "openssl"
+  depends_on "pcre"
+  depends_on "libevent"
+
   depends_on "bash" => :build
   depends_on "crystal" => :build
   depends_on "make" => :build
