@@ -19,6 +19,6 @@ class Mstrap < Formula
   end
 
   test do
-    assert_match "mstrap - mstrap is a tool for bootstrapping development machines", shell_output(bin/"mstrap --help", 255)
+    assert_match "mstrap - mstrap is a tool for bootstrapping development machines", shell_output(bin/"mstrap --help", 0)
   end
 end
