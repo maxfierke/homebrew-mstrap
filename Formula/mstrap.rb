@@ -6,8 +6,6 @@ class Mstrap < Formula
   license "MIT"
 
   depends_on "bash" => :build
-  # TODO: renable, once formula is fixed on Linux (Crystal needs update to work w/ LLVM 10)
-  # depends_on "crystal" => :build
   depends_on "make" => :build
   depends_on "pkg-config" => :build
 
