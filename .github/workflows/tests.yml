@@ -11,6 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Workaround by setting XCode to 12.1.1
+        if: matrix.os == 'macOS-latest'
         run: sudo xcode-select --switch /Applications/Xcode_12.1.1.app/Contents/Developer
 
       - name: Set up Homebrew
