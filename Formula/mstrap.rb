@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.2.4.tar.gz"
-  sha256 "6ddebd447fd5d89cf25583d6535d3ad37e60c8974205055c3a29a848153a7854"
+  url "https://github.com/maxfierke/mstrap/archive/v0.2.6.tar.gz"
+  sha256 "611d8c52ab025de29f748193b6aee6e6b1317fb54a97ca01fd4f9f308e5d4ce9"
   license "MIT"
 
   depends_on "bash" => :build
