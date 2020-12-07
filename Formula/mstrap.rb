@@ -37,6 +37,7 @@ class Mstrap < Formula
     # for Linux
     (buildpath/"crystal").install resource("crystal")
     ENV.append_path "PATH", "crystal/bin"
+    ENV.append_path "PATH", "crystal/embedded/bin"
 
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libedit"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
