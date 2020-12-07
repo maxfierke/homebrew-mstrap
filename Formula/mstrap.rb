@@ -13,6 +13,11 @@ class Mstrap < Formula
   depends_on "libevent"
   depends_on "openssl@1.1"
   depends_on "pcre"
+  depends_on "zlib"
+
+  head do
+    url "https://github.com/maxfierke/mstrap.git"
+  end
 
   resource "crystal" do
     on_macos do
@@ -32,8 +37,14 @@ class Mstrap < Formula
     # for Linux
     (buildpath/"crystal").install resource("crystal")
     ENV.append_path "PATH", "crystal/bin"
-    ENV.append_path "PKG_CONFIG_PATH", (Formula["openssl"].opt_lib/"pkgconfig")
-    ENV["CRYSTAL_LIBRARY_PATH"] = buildpath/"crystal/lib/crystal/lib"
+
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libedit"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@1.1"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
+
+    ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
 
     system "make", "build", "RELEASE=1"
     bin.install "bin/mstrap"
