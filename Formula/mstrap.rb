@@ -13,11 +13,18 @@ class Mstrap < Formula
   depends_on "make" => :build
   depends_on "pkg-config" => :build
 
-  depends_on "libedit"
   depends_on "libevent"
   depends_on "openssl@1.1"
   depends_on "pcre"
   depends_on "zlib"
+
+  on_macos do
+    depends_on "libedit"
+  end
+
+  on_linux do
+    depends_on "readline"
+  end
 
   resource "crystal" do
     on_macos do
