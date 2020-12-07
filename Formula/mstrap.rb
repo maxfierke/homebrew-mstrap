@@ -5,6 +5,10 @@ class Mstrap < Formula
   sha256 "611d8c52ab025de29f748193b6aee6e6b1317fb54a97ca01fd4f9f308e5d4ce9"
   license "MIT"
 
+  head do
+    url "https://github.com/maxfierke/mstrap.git"
+  end
+
   depends_on "bash" => :build
   depends_on "make" => :build
   depends_on "pkg-config" => :build
@@ -14,10 +18,6 @@ class Mstrap < Formula
   depends_on "openssl@1.1"
   depends_on "pcre"
   depends_on "zlib"
-
-  head do
-    url "https://github.com/maxfierke/mstrap.git"
-  end
 
   resource "crystal" do
     on_macos do
