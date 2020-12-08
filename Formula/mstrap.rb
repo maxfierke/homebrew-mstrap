@@ -16,11 +16,9 @@ class Mstrap < Formula
   depends_on "libevent"
   depends_on "openssl@1.1"
   depends_on "pcre"
-  depends_on "zlib"
 
-  on_macos do
-    depends_on "libedit"
-  end
+  uses_from_macos "libedit" if OS.mac?
+  uses_from_macos "zlib"
 
   on_linux do
     depends_on "readline"
@@ -46,11 +44,14 @@ class Mstrap < Formula
     ENV.append_path "PATH", "crystal/bin"
     ENV.append_path "PATH", "crystal/embedded/bin"
 
-    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libedit"].opt_lib/"pkgconfig")
+    unless OS.mac?
+      ENV.prepend_path "PKG_CONFIG_PATH", (Formula["readline"].opt_lib/"pkgconfig")
+      ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
+    end
+
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@1.1"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre"].opt_lib/"pkgconfig")
-    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
 
     ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
 
