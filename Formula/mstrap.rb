@@ -41,8 +41,8 @@ class Mstrap < Formula
     # Use static Crystal compiler, since the one in Homebrew seems to be broken
     # for Linux
     (buildpath/"crystal").install resource("crystal")
-    ENV.append_path "PATH", "crystal/bin"
-    ENV.append_path "PATH", "crystal/embedded/bin"
+    ENV.prepend_path "PATH", "crystal/bin"
+    ENV.prepend_path "PATH", "crystal/embedded/bin"
 
     unless OS.mac?
       ENV.prepend_path "PKG_CONFIG_PATH", (Formula["readline"].opt_lib/"pkgconfig")
