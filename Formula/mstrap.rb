@@ -5,6 +5,13 @@ class Mstrap < Formula
   sha256 "cc2021c78b542a0041365f204110c2c06bff6ecbc5c254e23915ba2112bb1a5b"
   license "MIT"
 
+  bottle do
+    root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.2.7"
+    cellar :any
+    sha256 "76e4ba1334b87d8ff711f2f8075a3f5ac16dafcb6b6c12dce04c265bb4e2a052" => :catalina
+    sha256 "a804f7379e5b6d66abf88c6785ce125f46e176f94ff99e925a2b1decd5a2d967" => :x86_64_linux
+  end
+
   head do
     url "https://github.com/maxfierke/mstrap.git"
   end
