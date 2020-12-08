@@ -20,16 +20,15 @@ class Mstrap < Formula
   uses_from_macos "libedit" if OS.mac?
   uses_from_macos "zlib"
 
+  on_macos do
+    depends_on "crystal" => :build
+  end
+
   on_linux do
     depends_on "readline"
   end
 
   resource "crystal" do
-    on_macos do
-      url "https://github.com/crystal-lang/crystal/releases/download/0.35.1/crystal-0.35.1-1-darwin-x86_64.tar.gz"
-      version "0.35.1-1"
-      sha256 "7d75f70650900fa9f1ef932779bc23f79a199427c4219204fa9e221c330a1ab6"
-    end
     on_linux do
       url "https://github.com/crystal-lang/crystal/releases/download/0.35.1/crystal-0.35.1-1-linux-x86_64.tar.gz"
       version "0.35.1-1"
@@ -38,22 +37,22 @@ class Mstrap < Formula
   end
 
   def install
-    # Use static Crystal compiler, since the one in Homebrew seems to be broken
-    # for Linux
-    (buildpath/"crystal").install resource("crystal")
-    ENV.prepend_path "PATH", "crystal/bin"
-    ENV.prepend_path "PATH", "crystal/embedded/bin"
-
     unless OS.mac?
+      # Use static Crystal compiler, since the one in Homebrew seems to be broken
+      # for Linux
+      (buildpath/"crystal").install resource("crystal")
+      ENV.prepend_path "PATH", "crystal/bin"
+      ENV.prepend_path "PATH", "crystal/embedded/bin"
+
       ENV.prepend_path "PKG_CONFIG_PATH", (Formula["readline"].opt_lib/"pkgconfig")
       ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
+
+      ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
     end
 
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@1.1"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre"].opt_lib/"pkgconfig")
-
-    ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
 
     system "make", "build", "RELEASE=1"
     bin.install "bin/mstrap"
