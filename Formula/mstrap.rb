@@ -6,10 +6,10 @@ class Mstrap < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.2.7"
+    root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.2.8"
     cellar :any
-    sha256 "76e4ba1334b87d8ff711f2f8075a3f5ac16dafcb6b6c12dce04c265bb4e2a052" => :catalina
-    sha256 "a804f7379e5b6d66abf88c6785ce125f46e176f94ff99e925a2b1decd5a2d967" => :x86_64_linux
+    sha256 "50e964f101be459cd7574555c9e453e0fee0fc6de363bdfd74e263baaa2f39c7" => :catalina
+    sha256 "95eb406504b0665f49d0363a3d0e8aa110d9d5f815f7b0cf062d9f4ee5482db1" => :x86_64_linux
   end
 
   head do
