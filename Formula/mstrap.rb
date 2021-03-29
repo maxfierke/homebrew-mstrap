@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.2.8.tar.gz"
-  sha256 "66d3c81fa5c68d40845a9fa411a53939ea5e772f949b28ab08352d3d8ad0cae8"
+  url "https://github.com/maxfierke/mstrap/archive/v0.3.1.tar.gz"
+  sha256 "87a27a5087d2330d824625ce5ff8cdf93fef64d8abfd871fd858feca6199362b"
   license "MIT"
 
   bottle do
@@ -37,9 +37,9 @@ class Mstrap < Formula
 
   resource "crystal" do
     on_linux do
-      url "https://github.com/crystal-lang/crystal/releases/download/0.35.1/crystal-0.35.1-1-linux-x86_64.tar.gz"
-      version "0.35.1-1"
-      sha256 "6c3fd36073b32907301b0a9aeafd7c8d3e9b9ba6e424ae91ba0c5106dc23f7f9"
+      url "https://github.com/crystal-lang/crystal/releases/download/1.0.0/crystal-1.0.0-1-linux-x86_64.tar.gz"
+      version "1.0.0-1"
+      sha256 "00211ca77758e99210ec40b8c5517b086d2ff9909e089400f6d847a95e5689a4"
     end
   end
 
