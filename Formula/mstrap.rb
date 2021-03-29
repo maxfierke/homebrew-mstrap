@@ -27,6 +27,7 @@ class Mstrap < Formula
   uses_from_macos "zlib"
 
   on_macos do
+    depends_on "bdw-gc"
     depends_on "crystal" => :build
   end
 
