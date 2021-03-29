@@ -7,8 +7,8 @@ class Mstrap < Formula
 
   bottle do
     root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.2.8"
-    sha256 "50e964f101be459cd7574555c9e453e0fee0fc6de363bdfd74e263baaa2f39c7" => :catalina, cellar :any
-    sha256 "95eb406504b0665f49d0363a3d0e8aa110d9d5f815f7b0cf062d9f4ee5482db1" => :x86_64_linux, cellar :any
+    sha256 catalina: "50e964f101be459cd7574555c9e453e0fee0fc6de363bdfd74e263baaa2f39c7", cellar :any
+    sha256 x86_64_linux: "95eb406504b0665f49d0363a3d0e8aa110d9d5f815f7b0cf062d9f4ee5482db1", cellar :any
   end
 
   head do
