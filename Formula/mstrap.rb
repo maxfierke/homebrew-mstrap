@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.3.1.tar.gz"
-  sha256 "87a27a5087d2330d824625ce5ff8cdf93fef64d8abfd871fd858feca6199362b"
+  url "https://github.com/maxfierke/mstrap/archive/v0.4.0.tar.gz"
+  sha256 "c458b7b8df55a05741f76f9fc7b8436d50abf475282db391371cc34a1fff7b2d"
   license "MIT"
 
   bottle do
