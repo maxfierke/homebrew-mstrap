@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.4.0.tar.gz"
-  sha256 "c458b7b8df55a05741f76f9fc7b8436d50abf475282db391371cc34a1fff7b2d"
+  url "https://github.com/maxfierke/mstrap/archive/v0.5.0.tar.gz"
+  sha256 "3a7198f31cab88e1d8037f8ec1ffb7fb3a619eb9e0f8d007550a66d357dbf6d8"
   license "MIT"
 
   bottle do
@@ -16,30 +16,28 @@ class Mstrap < Formula
   end
 
   depends_on "bash" => :build
+  depends_on "cmake" => :build
   depends_on "make" => :build
+  depends_on "meson" => :build
+  depends_on "ninja" => :build
   depends_on "pkg-config" => :build
 
+  depends_on "bdw-gc"
   depends_on "libevent"
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
   depends_on "pcre"
 
-  uses_from_macos "libedit" if OS.mac?
   uses_from_macos "zlib"
 
   on_macos do
-    depends_on "bdw-gc"
     depends_on "crystal" => :build
-  end
-
-  on_linux do
-    depends_on "readline"
   end
 
   resource "crystal" do
     on_linux do
-      url "https://github.com/crystal-lang/crystal/releases/download/1.0.0/crystal-1.0.0-1-linux-x86_64.tar.gz"
-      version "1.0.0-1"
-      sha256 "00211ca77758e99210ec40b8c5517b086d2ff9909e089400f6d847a95e5689a4"
+      url "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
+      version "1.6.1-1"
+      sha256 "44b1ccacc1c543d419513723f8fb1de942719c91d01b2de912d2159d3311440e"
     end
   end
 
@@ -58,8 +56,11 @@ class Mstrap < Formula
     end
 
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
-    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@1.1"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@3"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre"].opt_lib/"pkgconfig")
+
+    # Skip things like ameba
+    ENV["SHARDS_OPTS"] = "--without-development"
 
     system "make", "build", "RELEASE=1"
     bin.install "bin/mstrap"
