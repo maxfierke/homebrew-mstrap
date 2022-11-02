@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.5.0.tar.gz"
-  sha256 "3a7198f31cab88e1d8037f8ec1ffb7fb3a619eb9e0f8d007550a66d357dbf6d8"
+  url "https://github.com/maxfierke/mstrap/archive/v0.5.1.tar.gz"
+  sha256 "58d67a56b550e7be727df505b2ec704def97cae0eaee77fff0276ca0f7278af8"
   license "MIT"
 
   bottle do
@@ -16,7 +16,6 @@ class Mstrap < Formula
   end
 
   depends_on "bash" => :build
-  depends_on "cmake" => :build
   depends_on "make" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -49,7 +48,6 @@ class Mstrap < Formula
       ENV.prepend_path "PATH", "crystal/bin"
       ENV.prepend_path "PATH", "crystal/embedded/bin"
 
-      ENV.prepend_path "PKG_CONFIG_PATH", (Formula["readline"].opt_lib/"pkgconfig")
       ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
 
       ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
