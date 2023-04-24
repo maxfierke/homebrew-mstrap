@@ -16,6 +16,7 @@ class Mstrap < Formula
   end
 
   depends_on "bash" => :build
+  depends_on "crystal" => :build
   depends_on "make" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -28,31 +29,7 @@ class Mstrap < Formula
 
   uses_from_macos "zlib"
 
-  on_macos do
-    depends_on "crystal" => :build
-  end
-
-  resource "crystal" do
-    on_linux do
-      url "https://github.com/crystal-lang/crystal/releases/download/1.8.0/crystal-1.8.0-1-linux-x86_64.tar.gz"
-      version "1.8.0-1"
-      sha256 "000b1b301fc81fc706a67758204c201cb620c108fa0b32d97eb1265dd7f94177"
-    end
-  end
-
   def install
-    unless OS.mac?
-      # Use static Crystal compiler, since the one in Homebrew seems to be broken
-      # for Linux
-      (buildpath/"crystal").install resource("crystal")
-      ENV.prepend_path "PATH", "crystal/bin"
-      ENV.prepend_path "PATH", "crystal/embedded/bin"
-
-      ENV.prepend_path "PKG_CONFIG_PATH", (Formula["zlib"].opt_lib/"pkgconfig")
-
-      ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
-    end
-
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@3"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre2"].opt_lib/"pkgconfig")
