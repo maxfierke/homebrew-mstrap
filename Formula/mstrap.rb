@@ -33,7 +33,7 @@ class Mstrap < Formula
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@3"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre2"].opt_lib/"pkgconfig")
-    
+
     # This seems... wrong.
     ENV.prepend_path "PATH", Formula["crystal"].bin
 
