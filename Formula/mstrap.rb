@@ -1,8 +1,8 @@
 class Mstrap < Formula
   desc "Machine bootstrapping tool with a focus on conventions"
   homepage "https://mstrap.dev"
-  url "https://github.com/maxfierke/mstrap/archive/v0.5.1.tar.gz"
-  sha256 "58d67a56b550e7be727df505b2ec704def97cae0eaee77fff0276ca0f7278af8"
+  url "https://github.com/maxfierke/mstrap/archive/v0.7.2.tar.gz"
+  sha256 "e9e9c56f539f38e514d8ac526b51a6b66e7cc2535f45ec4442dc8ddd6dbfe46f"
   license "MIT"
 
   bottle do
@@ -22,9 +22,8 @@ class Mstrap < Formula
   depends_on "pkg-config" => :build
 
   depends_on "bdw-gc"
-  depends_on "libevent"
   depends_on "openssl@3"
-  depends_on "pcre"
+  depends_on "pcre2"
 
   uses_from_macos "zlib"
 
@@ -34,9 +33,9 @@ class Mstrap < Formula
 
   resource "crystal" do
     on_linux do
-      url "https://github.com/crystal-lang/crystal/releases/download/1.6.1/crystal-1.6.1-1-linux-x86_64.tar.gz"
-      version "1.6.1-1"
-      sha256 "44b1ccacc1c543d419513723f8fb1de942719c91d01b2de912d2159d3311440e"
+      url "https://github.com/crystal-lang/crystal/releases/download/1.17.1/crystal-1.17.1-1-linux-x86_64.tar.gz"
+      version "1.17.1-1"
+      sha256 "0348317f19e924c954e14f2a0ddf2341b66dc207316b69197192fdb73abd581e"
     end
   end
 
@@ -53,9 +52,8 @@ class Mstrap < Formula
       ENV.prepend_path "CRYSTAL_LIBRARY_PATH", (buildpath/"crystal/lib/crystal/lib")
     end
 
-    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["libevent"].opt_lib/"pkgconfig")
     ENV.prepend_path "PKG_CONFIG_PATH", (Formula["openssl@3"].opt_lib/"pkgconfig")
-    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre"].opt_lib/"pkgconfig")
+    ENV.prepend_path "PKG_CONFIG_PATH", (Formula["pcre2"].opt_lib/"pkgconfig")
 
     # Skip things like ameba
     ENV["SHARDS_OPTS"] = "--without-development"
