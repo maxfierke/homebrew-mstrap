@@ -8,9 +8,9 @@ class Mstrap < Formula
   head "https://github.com/maxfierke/mstrap.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.5.1"
-    sha256 cellar: :any,                 monterey:     "9e8bd84a169fa64caaa7e771f984333d520069f87e2c55206c8335be026b2184"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "7674816dcd9b26cc57df9cbc44ec4833f846186f6a1c5570c79c4288eb6a123f"
+    root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.7.2"
+    sha256 arm64_sequoia: "b2bf7225616374e034af79cd0cb6a59375c61629885a054905e8596c50a5b3ad"
+    sha256 x86_64_linux:  "41fce19ace3bb40c8ce312b9572a6cca690fd746dbdbbb9ceb338aa4112a6701"
   end
 
   depends_on "bash" => :build
