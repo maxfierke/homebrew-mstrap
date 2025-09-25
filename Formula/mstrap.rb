@@ -5,7 +5,7 @@ class Mstrap < Formula
   sha256 "e9e9c56f539f38e514d8ac526b51a6b66e7cc2535f45ec4442dc8ddd6dbfe46f"
   license "MIT"
 
-  head "https://github.com/maxfierke/mstrap.git"
+  head "https://github.com/maxfierke/mstrap.git", branch: 'main'
 
   bottle do
     root_url "https://github.com/maxfierke/homebrew-mstrap/releases/download/mstrap-0.5.1"
